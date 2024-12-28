@@ -100,8 +100,8 @@ it('User Login with valid username & password blank',() => {
      })
      
 
-// Test Case 5: valid username & password blank  
-it('User Login with valid username & password blank',() => {
+// Test Case 6: username blank & valid password  
+it('User Login with username blank & valid password',() => {
 
      // link login page
      cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
@@ -117,25 +117,7 @@ it('User Login with valid username & password blank',() => {
 
      })
 
-
-// Test Case 6: blank username & valid password   
-it('User Login with valid username & password blank',() => {
-
-     // link login page
-     cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
-     loginPage.textLogin().should('have.text','Login');
-
-     // masukan username valid dan tidak mengisi password
-     loginPage.inputUsername().should('have.value', '');
-     loginPage.inputPassword().type('admin123');
-
-     // klik button login
-     loginPage.buttonLogin().click();
-     loginPage.messageRequired().should('have.text','Required')
-
-     })     
-     
-
+ 
 // Test Case 7: blank username & blank password   
 it('User Login with username blank & password blank',() => {
 
