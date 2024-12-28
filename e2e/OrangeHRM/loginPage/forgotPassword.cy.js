@@ -6,18 +6,16 @@ import forgotPassword from "../../../POM/orangeHRM/loginPage/forgotPassword";
 // forgot password di halaman login
 describe('Forgot Password Feature', () => {
   it('Reset Password with credential user', () => {
-      cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
-      loginPage.textLogin().should('have.text','Login');
-
-      // klik tombol forgot password 
-      forgotPassword.buttonForgotPassword().click();
-      forgotPassword.textResetPassword().should('have.text', 'Reset Password');
-      forgotPassword.inputUsername().type('Admin');
-      cy.intercept("GET", "**/index.php/auth/sendPasswordReset").as("sendPasswordReset");
-      forgotPassword.buttonResetPassword().click();
-      cy.wait("@sendPasswordReset");
-      forgotPassword.textResetPassword().should('have.text','Reset Password link sent successfully')
-   })
+    cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
+    loginPage.textLogin().should('have.text','Login');
+    forgotPassword.buttonForgotPassword().click();
+    forgotPassword.textResetPassword().should('have.text', 'Reset Password');
+    forgotPassword.inputUsername().type('Admin');
+    cy.intercept("GET", "**/index.php/auth/sendPasswordReset").as("sendPasswordReset");
+    forgotPassword.buttonResetPassword().click();
+    cy.wait("@sendPasswordReset");
+    forgotPassword.textResetPassword().should('have.text','Reset Password link sent successfully')
+    })
 
 
 // halaman reset password
